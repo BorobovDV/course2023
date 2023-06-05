@@ -1,0 +1,133 @@
+{% extends 'booking/base.html' %}
+
+{% load booking_tags %}
+{% load static %}
+
+{% block scheme %}
+<div class="scheme" style="background-image: url({% get_main_back %})">
+  <div class="scheme-wrapper">
+    <div class="left">
+        <div class="display">ЭКРАН</div>
+        <div class="rtl">
+          <ul class="rows">
+            <li class="clear">
+              <div class="number-left">1</div>
+              <div class="{{ place_status.0 }}" row="1" cols="1">1</div>
+              <div class="{{ place_status.1 }}" row="1" cols="2">2</div>
+              <div class="{{ place_status.2 }}" row="1" cols="3">3</div>
+              <div class="{{ place_status.3 }}" row="1" cols="4">4</div>
+              <div class="{{ place_status.4 }}" row="1" cols="5">5</div>
+              <div class="number-right">1</div>
+            </li>
+            <li class="clear">
+              <div class="number-left">2</div>
+              <div class="{{ place_status.5 }}" row="2" cols="1">1</div>
+              <div class="{{ place_status.6 }}" row="2" cols="2">2</div>
+              <div class="{{ place_status.7 }}" row="2" cols="3">3</div>
+              <div class="{{ place_status.8 }}" row="2" cols="4">4</div>
+              <div class="{{ place_status.9 }}" row="2" cols="5">5</div>
+              <div class="number-right">2</div>
+            </li>
+            <li class="clear">
+              <div class="number-left">3</div>
+              <div class="{{ place_status.10 }}" row="3" cols="1">1</div>
+              <div class="{{ place_status.11 }}" row="3" cols="2">2</div>
+              <div class="{{ place_status.12 }}" row="3" cols="3">3</div>
+              <div class="{{ place_status.13 }}" row="3" cols="4">4</div>
+              <div class="{{ place_status.14 }}" row="3" cols="5">5</div>
+              <div class="number-right">3</div>
+            </li>
+            <li class="clear">
+              <div class="number-left">4</div>
+              <div class="{{ place_status.15 }}" row="4" cols="1">1</div>
+              <div class="{{ place_status.16 }}" row="4" cols="2">2</div>
+              <div class="{{ place_status.17 }}" row="4" cols="3">3</div>
+              <div class="{{ place_status.18 }}" row="4" cols="4">4</div>
+              <div class="{{ place_status.19 }}" row="4" cols="5">5</div>
+              <div class="number-right">4</div>
+            </li>
+            <li class="clear">
+              <div class="number-left">5</div>
+              <div class="{{ place_status.20 }}" row="5" cols="1">1</div>
+              <div class="{{ place_status.21 }}" row="5" cols="2">2</div>
+              <div class="{{ place_status.22 }}" row="5" cols="3">3</div>
+              <div class="{{ place_status.23 }}" row="5" cols="4">4</div>
+              <div class="{{ place_status.24 }}" row="5" cols="5">5</div>
+              <div class="number-right">5</div>
+            </li>
+          </ul>
+        </div>
+      <div class="left-buttons">
+        <a href="" class="update">Обновить информацию</a>
+        <button class="reset-btn" onclick="reset_tickets()">
+          Отменить все бронирования
+        </button>
+      </div>
+    </div>
+    <div class="right">
+      <p>Информация о билете</p>
+      <div class="right-content">
+        <div class="row">
+          <p>Фильм :</p>
+          <p>{{ film_name }}</p>
+        </div>
+        <div class="row">
+          <p>Дата :</p>
+          <p>{{ date }}</p>
+        </div>
+        <div class="row">
+          <p>Время :</p>
+          <p>{{ time }}</p>
+        </div>
+        <div class="row">
+          <p>Зал :</p>
+          <p>{{ hall }}</p>
+        </div>
+        <div class="place-content">
+        </div>
+        <div class="row">
+          <p>Доступно к бронированию :</p>
+          <p class="rent-count"></p>
+        </div>
+        <div class="row">
+          <p>Цена :</p>
+          <p class="price"> рублей</p>
+        </div>
+      </div>
+      <div class="but-div">
+        <form action="{% url 'rent' %}" method="get" name="send" id="data">  <!-- ЗДЕСЬ ПОЗЖЕ ДОПИСАТЬ ОБЯЗАТЕЛЬНО ССЫЛКУ НА ФОРМУ ОБРАБОТЧИК -->
+          <input class="inputRNT" name="rent_place" style="display: none;">
+          <input class="inputSession" name="idsession" style="display: none" value="{{ idsession }}"/>
+          <input class="inputUserID" name="userid" style="display: none" value="{{ userid }}"/>
+        </form>
+        <button type="submit" form="data" class="glow-on-hover">Подтвердить бронирование</button>
+      </div>
+    </div>
+    <div class="legend">
+      <p>Какая то легенда для схемы</p>
+      <div class="content-legend">
+        <div class="row">
+          <div class="rent">Z</div>
+          <p class="row-text">- Забронировано</p>
+        </div>
+        <div class="row">
+          <div class="early">V</div>
+          <p class="row-text">- Забронировано ранее</p>
+        </div>
+        <div class="row">
+          <div class="free">Z</div>
+          <p class="row-text">- Свободно</p>
+        </div>
+        <div class="row">
+          <div class="active">V</div>
+          <p class="row-text">- Выбрано</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock scheme %}
+
+{% block script_for_scheme %}
+  <script src="{% static 'booking/js/scheme.js' %}"></script>
+{% endblock script_for_scheme %}

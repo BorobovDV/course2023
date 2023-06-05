@@ -1,0 +1,27 @@
+{% extends 'booking/base.html' %}
+
+{% load booking_tags %}
+{% load static %}
+
+{% block index %}
+<div class="slider">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      {% for image in images %}
+      <div
+        class="swiper-slide"
+        style="background-image: url({% static 'booking/images/' %}{{ image }})"
+      ></div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+{% endblock index %}
+
+{% block script_for_slider %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="{% static 'booking/js/slider.js' %}"></script>
+{% endblock script_for_slider %}

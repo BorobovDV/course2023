@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TUSUR Cinema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'booking/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static 'booking/css/style.css' %}" />
+    <link rel="icon" href="{% static 'booking/images/logo/icon.ico' %}" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header header-main">
+        <div class="container">
+          <div class="header__inner">
+            {% if is_user_logged_in %}
+            <a href="{{ url_home }}" class="logo">
+            {% else %}
+            <a href="{% url 'home' %}" class="logo">
+            {% endif %}
+              <img
+                src="{% static 'booking/images/logo/Tusur.svg' %}"
+                width="150"
+                height="80"
+                alt="TUSUR"
+                class="logo__img"
+              />
+            </a>
+            <nav class="menu">
+              <ul class="menu__list">
+                <li class="menu__list-item">
+                  <a href="#" class="menu__list-link hide">Новости</a>
+                </li>
+                <li class="menu__list-item">
+                  {% if is_user_logged_in %}
+                   <a href="{{ url_billboard }}" class="menu__list-link">Афиша</a>
+                  {% else %}
+                   <a href="{% url 'billboard' %}" class="menu__list-link">Афиша</a>
+                  {% endif %}
+                </li>
+                <li class="menu__list-item">
+                  <a href="#" class="menu__list-link hide">Бронирование</a>
+                </li>
+                <div class="login">
+                  {% if is_user_logged_in %}
+                    <a href="#" class="menu__list-link-log">{{ up }}</a>
+                    <div class="line"></div>
+                    <a href="{% url 'exit_acc' %}" class="menu__list-link-reg">{{ down }}</a>
+                  {% else %}
+                    <a href="{% url 'auth' %}" class="menu__list-link-log">{{ up }}</a>
+                    <div class="line"></div>
+                    <a href="{% url 'reg' %}" class="menu__list-link-reg">{{ down }}</a>
+                  {% endif %}
+                </div>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main class="main" style="background-image: url({% static 'booking/images/backs/main_back.jpg' %})">
+        {% block index %}
+        {% endblock index %}
+
+        {% block billboard %}
+        {% endblock billboard %}
+
+        {% block scheme %}
+        {% endblock scheme %}
+
+        {% block date %}
+        {% endblock date %}
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__copy">
+            <p class="footer__copy-text">
+              Данный сайт выполнен в рамках курсовой работы группы 710-1
+              Факультета Безопасности.
+            </p>
+            <p class="footer__copy-text">
+              Все права защищены, контактный телефон:
+              <a href="tel:28-19-08" class="footer__copy-tel">28-19-08</a>.
+            </p>
+            <p class="footer__copy-text">
+              (PS. Это не наш телефон. Это телефон "Шаурма Гриль Томск" ☺)
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    {% block script_for_slider %}
+    {% endblock script_for_slider %}
+    {% block script_for_scheme %}
+    {% endblock script_for_scheme %}
+    {% block script_for_date %}
+    {% endblock script_for_date %}
+    {% block script_for_billboard %}
+    {% endblock script_for_billboard %}
+  </body>
+</html>

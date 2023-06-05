@@ -1,0 +1,751 @@
+/*  ОСНОВНЫЕ СТИЛИ ПРОЕКТА, СОДЕРЖАЩИЕ HEADER, MAIN, FOOTER  */
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    height: 100%;
+}
+
+body{
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/*  color: 434090*/
+
+.wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.header{
+    background-color: #b0b0b0;
+    position: relative;
+}
+
+.header-main{
+    /* background-color: transparent; */
+    /* position: absolute;
+    z-index: 5;
+    left: 0;
+    right: 0; */
+}
+
+.header__inner{
+    padding: 35px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu__list{
+    display: flex;
+    gap: 25px;
+}
+
+.login{
+    margin-left: 100px;
+    display: grid;
+    color: #434090;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu__list-item{
+    margin-top: 10px;
+    color: #434090;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* СДЕЛАЛ ДЛЯ СОКРЫТИЯ НЕДОРАБОТАННЫХ КНОПОК, И ЧТОБЫ НЕ СЛЕТЕЛА РАЗМЕТКА */
+.hide{
+    color: transparent;
+    cursor: default;
+}
+
+.menu__list-link-log{
+    margin: 0 auto;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line{
+    background-color: rgb(81, 184, 81);
+    height: 3px;
+    width: 170px;
+}
+
+.menu__list-link-reg{
+    /* border-top: 3px solid rgb(81, 184, 81); */
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    flex-grow: 1;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+.footer{
+    padding: 50px;
+    background-color: #b0b0b0;
+    color: #434090;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.footer__copy{
+    min-width: 800px;
+    text-align: center;
+}
+
+.footer__copy-text{
+    margin-bottom: 10px;
+}
+/* --------------------------------------------------------------------- */
+
+/* СТИЛИ ДЛЯ СЛАЙДЕРА */
+.slider{
+    margin: 0 auto;
+    max-width: 1550px;
+    box-shadow: 0px 0px 20px 5px #151515;
+}
+
+.swiper::after{
+    content: '';
+    background-color: rgba(21,21,21, .4);
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.swiper-slide{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+:root{
+    --swiper-theme-color: #642580;
+    --swiper-navigation-size: 100px;
+    --swiper-pagination-progressbar-size: 10px;
+}
+/* --------------------------------------------------------------------- */
+
+/* СТИЛИ ДЛЯ ЧАСТИ БРОНИРОВАНИЯ БИЛЕТОВ */
+li{
+    list-style: none;
+}
+
+ul{
+    padding-inline-start: 0;
+}
+
+.scheme{
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-size: 24px;
+    font-weight: 200;
+}
+
+.scheme-wrapper{
+    background-color: #434090;
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 20px 10px 20px 70px;
+    display: grid;
+    grid-template-columns: 700px auto;
+    border-top: 3px solid black;
+}
+
+.rtl{
+    max-width: 700px;
+    margin-bottom: 50px;
+}
+
+.display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    height: 50px;
+    margin-bottom: 100px;
+    background-color: #525050;
+    box-shadow: #151515 0px 0px 15px;
+}
+
+.number-left, .number-right{
+    width: 0;
+    height: 0;
+    border-width: 40px 20px 10px;
+    border-style: solid;
+    border-color: #8d2269 #8d2269 transparent;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    box-shadow: #151515 0px -3px 5px;
+}
+
+.number-left{
+    margin-right: 40px;
+}
+.number-right{
+    margin-left: 40px;
+}
+
+.item-empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #525050;
+    border-radius: 2px;
+    text-align: center;
+    box-shadow: #151515 0px 0px 5px;
+    transition: box-shadow .6s;
+}
+
+.item-empty--active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #167521;
+    border-radius: 2px;
+    text-align: center;
+    box-shadow: #e8dede 0px 0px 5px;
+    transition: box-shadow .6s;
+}
+
+.item-empty--free{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #8d2269;
+    border-radius: 2px;
+    text-align: center;
+    box-shadow: #151515 0px 0px 5px;
+    transition: box-shadow .6s;
+}
+
+.item-empty--early{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #7d7324;
+    border-radius: 2px;
+    text-align: center;
+    box-shadow: #151515 0px 0px 5px;
+    transition: box-shadow .6s;
+}
+
+.item-empty--active:hover, .item-empty--free:hover, .item-empty--cassier, .item-empty--cancel{
+    box-shadow: #151515 0px 0px 10px;
+    cursor: pointer;
+}
+
+.item-empty--cassier{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #0bb4e8;
+    border-radius: 2px;
+    text-align: center;
+    box-shadow: #151515 0px 0px 5px;
+    transition: box-shadow .6s;
+}
+
+.item-empty--cancel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #f50707;
+    border-radius: 2px;
+    text-align: center;
+    box-shadow: #151515 0px 0px 5px;
+    transition: box-shadow .6s;
+}
+
+.clear{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.left-buttons{
+    display: flex;
+    justify-content: space-between
+}
+
+.update{
+    color: white;
+    padding: 3px;
+    margin-top: 55px;
+    text-decoration: underline;
+}
+
+.reset-btn {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background-color: transparent;
+    border: 2px dashed #8d2269;
+    border-radius: 0.6em;
+    color: #ffffff;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-top: 55px;
+    padding: 7px 7px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-transition: box-shadow 600ms ease-in-out, color 600ms ease-in-out;
+    transition: box-shadow 600ms ease-in-out, color 600ms ease-in-out;
+}
+
+.reset-btn:hover, .reset-btn:focus {
+    color: #fff;
+    outline: 0;
+}
+
+.reset-btn:hover {
+    box-shadow: 0 0 40px 40px #4c1d4f inset;
+    border: 2px solid #c6bec3;
+}
+
+.right{
+    position: relative;
+    padding-top: 20px;
+    max-width: 420px;
+    border: 1px solid black;
+    height: 50px;
+    margin-left: 30px;
+    height: 690px;
+}
+
+.right p{
+    display: flex;
+    justify-content: center;
+}
+
+.place{
+    display: flex;
+}
+
+.but-div{
+    position: absolute;
+    bottom: 30px;
+}
+
+.glow-on-hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    padding: 20px;
+    max-width: 320px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 24px;
+
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    top: 30px;
+    left: 15px;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #34d33c
+}
+
+/* .glow-on-hover:active:after {
+    background: transparent;
+} */
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.legend{
+    margin-top: 10px;
+    padding-top: 10px;
+    max-width: 700px;
+    border: 1px solid black;
+    height: 215px;
+}
+
+.legend p{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.row{
+    display: flex;
+}
+
+.row p{
+    padding: 15px 0px 0px 15px;
+}
+
+.content-legend{
+    padding-left: 30px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    max-width: 700px;
+}
+
+.rent, .early, .free, .active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 32px;
+    box-shadow: #151515 0px 0px 5px;
+}
+
+.rent{
+    background-color: #525050;
+}
+
+.early{
+    background-color: #7d7324;
+}
+
+.free{
+    background-color: #8d2269;
+}
+
+.active{
+    background-color: #167521;
+}
+/* --------------------------------------------------------------------- */
+
+/* СТИЛИ ДЛЯ СТРАНИЦЫ АФИШИ */
+.tabs{
+    color: white;
+    font-size: 24px;
+}
+
+.tabs__btn{
+    padding: 50px 350px;
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    padding-bottom: 50px;
+}
+
+.tabs__btn-item{
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.tabs__btn-item--active{
+    color: white;
+}
+
+.tabs__content-item{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 40px;
+}
+
+.card{
+    text-align: center;
+    border: 1px solid black;
+    background-color: #b0b0b0;
+    margin-bottom: 40px;
+}
+
+.card button{
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    color: white;
+}
+
+.card__content, .link-btn{
+    padding: 5px;
+}
+
+.card__img{
+    display: block;
+    width: 270px;
+    height: 170px;
+}
+
+.card__title{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* >>>>КНОПКИ ДЛЯ КАРТОЧКИ<<<< */
+.link__btn{
+    border-top: 1px solid black;
+}
+
+.btn{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    transition: 1s all ease;
+    z-index: 1;
+  }
+
+  .btn1, .btn2{
+  background-color: #4340905c !important;
+  }
+
+  .btn::before{
+    background: #434090;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+  }
+
+  .btn2::before, .btn1::before{
+    width: 100%;
+    height: 0%;
+  }
+  .btn2:hover::before, .btn1:hover::before{
+    height: 100%;
+  }
+/* --------------------------------------------------------------------- */
+/* БЛОК ДЛЯ ВЫБОРА ДАТЫ И ВРЕМЕНИ СЕАНСА */
+.date-time{
+    padding-bottom: 50px;
+    font-weight: 400;
+}
+
+.date__content{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 40px;
+    padding: 50px 0;
+    border-bottom: 3px solid black;
+}
+
+.select_date{
+   display: none;
+   padding-top: 40px;
+}
+
+.time__content{
+    padding-top: 40px;
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 40px;
+}
+
+.time__content--active{
+    display: grid;
+}
+
+.time, .date{
+    padding: 5px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.date--active, .time--active{
+    font-weight: 700;
+    border: 2px solid #167521;
+}
+
+.time:hover, .date:hover{
+    font-size: 17px;
+}
+/* --------------------------------------------------------------------- */
+
+/* КНОПКА ДЛЯ ПОДТВЕРЖДЕНИЯ ДАТЫ И ВРЕМЕНИ */
+.date-time{
+    padding: 50px;
+}
+
+.date_time_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto 10px;
+    padding: 20px;
+    max-width: 320px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 24px;
+
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    top: 30px;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.date_time_btn:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.date_time_btn:active {
+    color: #34d33c
+}
+
+/* .glow-on-hover:active:after {
+    background: transparent;
+} */
+
+.date_time_btn:hover:before {
+    opacity: 1;
+}
+
+.date_time_btn:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}

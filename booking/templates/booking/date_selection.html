@@ -1,0 +1,45 @@
+{% extends 'booking/base.html' %}
+
+{% load booking_tags %}
+{% load static %}
+
+
+{% block date %}
+<div class="container">
+    <div class="date-time">
+        <div>Выберите дату:</div>
+        <div class="date__content">
+            {% for session in sessions %}
+                <a href="#" class="date">{{ session.date }}</a>
+            {% endfor %}
+        </div>
+        <div class="select_date">Выберите время:</div>
+        {% for session in sessions %}
+        <div class="time__content" id="{{ session.date }}">
+            {% for date, time in times.items %}
+                {% if date == session.date %}
+                    {% for t in time %}
+                        <a href="#" class="time">{{ t }}</a>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <form action="{% url 'scheme' %}" method="get" name="send" id="data">
+          <input class="inputDate" name="date" style="display: none"/>
+          <input class="inputTime" name="time" style="display: none"/>
+          <input class="inputUserID" name="userid" style="display: none" value="{{ userid }}"/>
+          <input class="inputFilmID" name="filmID" style="display: none" value="{{ filmID }}"/>
+        </form>
+        <button type="button" form="data" class="date_time_btn">
+          Подтвердить дату
+        </button>
+    </div>
+</div>
+{% endblock date %}
+
+{% block script_for_date %}
+    <script src="{% static 'booking/js/date.js' %}"></script>
+{% endblock script_for_date %}
+
+

@@ -1,0 +1,49 @@
+{% extends 'booking/base.html' %}
+
+{% load booking_tags %}
+{% load static %}
+
+{% block billboard %}
+<div class="container">
+    <div class="tabs">
+        <div class="tabs__btn">
+            <button class="tabs__btn-item tabs__btn-item--active">Сейчас в прокате</button>
+            <button class="tabs__btn-item">История проката</button>
+        </div>
+        {% if is_user_logged_in %}
+        <form action="{% url 'date_selection' %}" method="get" name="send" id="data">
+            <input class="inputFilmID" name="filmID" style="display: none"/>
+            <input class="inputUserID" name="userid" value="{{ userid }}" style="display: none"/>
+        </form>
+        {% endif %}
+        <div class="tabs__content">
+            <div class="tabs__content-item">
+                {% for film in films %}
+                <div class="card">
+                    <img class="card__img" src="{{ film.get_poster }}" alt="Должна быть картинка, но раз вы видите этот текст, админы уже правят фичу">
+                    <div class="card__content">
+                        <h4 class="card__title">{{ film.name }}</h4>
+<!--                        <p class="card_text">Кол-во мест: Z</p>-->
+                        <p class="card__price">Цена: {{ film.price }} Рублей</p>
+                    </div>
+                    <div class="link__btn">
+                        <a href="{{ film.trailer }}" class="btn btn2">Смотреть трейлер</a>
+                    </div>
+                    <div class="link__btn">
+                        {% if is_user_logged_in %}
+                            <button type="submit" class="btn btn1" id="{{ film.idfilm }}" form="data">Перейти к бронированию</button>
+                        {% else %}
+                            <a href="{% url 'auth' %}" class="btn btn1">Перейти к бронированию</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock billboard %}
+
+{% block script_for_billboard %}
+<script src="{% static 'booking/js/billboard.js' %}"></script>
+{% endblock script_for_billboard %}
